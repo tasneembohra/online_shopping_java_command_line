@@ -47,9 +47,5 @@ public abstract class User implements IDisplay {
             return false;
         }
     }
-
-    @Override
-    public String display() {
-        return null;
-    }
+    
 }
