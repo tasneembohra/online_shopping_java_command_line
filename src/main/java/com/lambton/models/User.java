@@ -8,8 +8,7 @@ public abstract class User implements IDisplay {
     private String password;
     private String loginStatus;
 
-    public User() {
-    }
+    public User() { }
 
     public User(String password) {
         userId++;

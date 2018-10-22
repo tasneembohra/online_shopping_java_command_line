@@ -60,9 +60,8 @@ public class ShoppingCart implements IDisplay {
 
     @Override
     public String display() {
-        String output = "\nCart ID: " + cartId
+        return "\nCart ID: " + cartId
                 + "\nDate Added: " + dateAdded
                 + "\nCustomer Name: " + customer.getCustomerName();
-        return output;
     }
 }

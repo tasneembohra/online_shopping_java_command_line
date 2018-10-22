@@ -39,9 +39,8 @@ public class Product implements IDisplay {
 
     @Override
     public String display() {
-        String output = "\nProduct ID: " + productId
-                + "\nProduct Name: " + productName
-                + "\nPrice for unit: " + productPrice;
-        return output;
+        return "\n\r\tProduct ID: " + productId
+                + "\n\tProduct Name: " + productName
+                + "\n\tPrice for unit: " + productPrice;
     }
 }

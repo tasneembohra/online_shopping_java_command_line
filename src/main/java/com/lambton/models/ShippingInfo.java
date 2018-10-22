@@ -59,10 +59,9 @@ public class ShippingInfo implements IDisplay {
 
     @Override
     public String display() {
-        String output = "\n\tShipping ID: " + shippingId
+        return "\n\tShipping ID: " + shippingId
                 + "\n\tShipping Address: " + shippingAddress
                 + "\n\tShipping Region: " + shippingRegionId
                 + "\n\tShipping Type: " + shippingType;
-        return output;
     }
 }

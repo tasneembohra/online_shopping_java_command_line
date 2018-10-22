@@ -1,8 +1,12 @@
 package com.lambton.models;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.lambton.utils.IDisplay;
 import com.sun.tools.internal.ws.wsdl.document.Output;
 
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -16,6 +20,7 @@ public class Order implements IDisplay {
     private HashMap<Product, Integer> orderMap;
     private Customer customer;
     private boolean orderConfirmation = false; //confirmation
+
 
     public Order(ShoppingCart shoppingCart) {
         orderId++;
@@ -83,10 +88,10 @@ public class Order implements IDisplay {
         for (HashMap.Entry<Product, Integer> product: orderMap.entrySet()) {
             productCount += product.getValue();
         }
-        if (productCount > 5) {
-            customer.getShippingInfo().setShippingCost(customer.getShippingInfo().getShippingCost() * 1.5);
-        } else if (productCount > 10) {
+        if (productCount > 10) {
             customer.getShippingInfo().setShippingCost(customer.getShippingInfo().getShippingCost() * 2);
+        } else if (productCount > 5) {
+            customer.getShippingInfo().setShippingCost(customer.getShippingInfo().getShippingCost() * 1.5);
         }
     }
 
@@ -109,24 +114,22 @@ public class Order implements IDisplay {
     }
 
     public String viewOrderList() {
-        String output = "";
+        StringBuilder builder = new StringBuilder();
         for (HashMap.Entry<Product, Integer> item: orderMap.entrySet()) {
-            output += "\n\tProduct name: " + item.getKey().getProductName()
-                    + "\n\tPrice for unit: " + item.getKey().getProductPrice()
-                    + "\n\tQuantity: " + item.getValue();
+            builder.append("\n\t\t\tProduct name: ").append(item.getKey().getProductName()).append("\n\t\t\tPrice for unit: ").append(item.getKey().getProductPrice()).append("\n\t\t\tQuantity: ").append(item.getValue());
         }
-        return output;
+        return builder.toString();
     }
 
     @Override
     public String display() {
-        String output = customer.display()
-                + "\nOrder ID: " + orderId
-                + "\nDate Created: " + dateCreated
-                + "\nStatus: " + status
-                + "\nDate Shipped: " + dateShipped
-                + "\nOrder List: \t" + this.viewOrderList()
-                + "\nTotal: " + this.calcTotal() + " (Shipping Cost: " + customer.getShippingInfo().getShippingCost() + " )";
-        return output;
+        SimpleDateFormat format = new SimpleDateFormat("MMM dd, YYYY");
+        return customer.display()
+                + "\n\rOrder ID: " + orderId
+                + "\n\tDate Created: " + format.format(dateCreated)
+                + "\n\tStatus: " + status
+                + "\n\tDate Shipped: " + format.format(dateCreated)
+                + "\n\tOrder List: \t" + this.viewOrderList()
+                + "\n\rTotal: " + this.calcTotal() + " (Shipping Cost: " + customer.getShippingInfo().getShippingCost() + " )";
     }
 }

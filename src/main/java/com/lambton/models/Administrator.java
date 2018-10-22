@@ -34,9 +34,8 @@ public class Administrator extends User implements IDisplay {
 
     @Override
     public String display() {
-        String output = "\nAdmin ID: " + super.getUserId()
+        return "\nAdmin ID: " + super.getUserId()
                 + "\nAdmin Email: " + email
                 + "\nAdmin Name: " + adminName;
-        return output;
     }
 }
