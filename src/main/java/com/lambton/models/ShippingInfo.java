@@ -1,6 +1,8 @@
 package com.lambton.models;
 
-public class ShippingInfo {
+import com.lambton.utils.IDisplay;
+
+public class ShippingInfo implements IDisplay {
     private int shippingId = 0;
     private String shippingAddress;
     private String shippingType;
@@ -23,6 +25,12 @@ public class ShippingInfo {
 
     public void setShippingType(String shippingType) {
         this.shippingType = shippingType;
+        switch (shippingType) {
+            case "Post": this.shippingCost = 10.0;
+                break;
+            case "Courier": this.shippingCost = 20.0;
+                break;
+        }
     }
 
     public double getShippingCost() {
@@ -47,5 +55,14 @@ public class ShippingInfo {
 
     public void updateShippingAddress(String shippingAddress) {
         this.shippingAddress = shippingAddress;
+    }
+
+    @Override
+    public String display() {
+        String output = "\n\tShipping ID: " + shippingId
+                + "\n\tShipping Address: " + shippingAddress
+                + "\n\tShipping Region: " + shippingRegionId
+                + "\n\tShipping Type: " + shippingType;
+        return output;
     }
 }

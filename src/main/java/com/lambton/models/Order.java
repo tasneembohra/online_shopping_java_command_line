@@ -1,6 +1,7 @@
 package com.lambton.models;
 
 import com.lambton.utils.IDisplay;
+import com.sun.tools.internal.ws.wsdl.document.Output;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -12,7 +13,6 @@ public class Order implements IDisplay {
     private Date dateCreated;
     private Date dateShipped;
     private String status;
-    private ShippingInfo shippingInfo;
     private HashMap<Product, Integer> orderMap;
     private Customer customer;
     private boolean orderConfirmation = false; //confirmation
@@ -22,7 +22,6 @@ public class Order implements IDisplay {
         dateCreated = new GregorianCalendar().getTime();
         orderMap = shoppingCart.getCartMap();
         customer = shoppingCart.getCustomer();
-        shippingInfo = customer.getShippingInfo();
     }
 
     public boolean isOrderConfirmation() {
@@ -62,15 +61,21 @@ public class Order implements IDisplay {
     }
 
     public ShippingInfo getShippingInfo() {
-        return shippingInfo;
+        return customer.getShippingInfo();
     }
 
     public void updateShippingInfo(ShippingInfo shippingInfo) {
-        this.shippingInfo = shippingInfo;
+        customer.setShippingInfo(shippingInfo);
     }
 
     public void setShippingType(String type) {
-        shippingInfo.setShippingType(type);
+        customer.getShippingInfo().setShippingType(type);
+        switch (type) {
+            case "Post": customer.getShippingInfo().setShippingCost(10.0);
+                        break;
+            case "Courier": customer.getShippingInfo().setShippingCost(20.0);
+                        break;
+        }
     }
 
     public void calcShippingCost() {
@@ -79,11 +84,9 @@ public class Order implements IDisplay {
             productCount += product.getValue();
         }
         if (productCount > 5) {
-            shippingInfo.setShippingCost(shippingInfo.getShippingCost() * 1.5);
+            customer.getShippingInfo().setShippingCost(customer.getShippingInfo().getShippingCost() * 1.5);
         } else if (productCount > 10) {
-            shippingInfo.setShippingCost(shippingInfo.getShippingCost() * 2);
-        } else {
-            shippingInfo.getShippingCost();
+            customer.getShippingInfo().setShippingCost(customer.getShippingInfo().getShippingCost() * 2);
         }
     }
 
@@ -93,7 +96,7 @@ public class Order implements IDisplay {
         for (HashMap.Entry<Product, Integer> product: orderMap.entrySet()) {
             total += product.getKey().getProductPrice() * product.getValue();
         }
-        total += shippingInfo.getShippingCost();
+        total += customer.getShippingInfo().getShippingCost();
         return total;
     }
 
@@ -101,9 +104,29 @@ public class Order implements IDisplay {
         this.orderConfirmation = true;
     }
 
+    public void cancelOreder() {
+        this.orderConfirmation = false;
+    }
+
+    public String viewOrderList() {
+        String output = "";
+        for (HashMap.Entry<Product, Integer> item: orderMap.entrySet()) {
+            output += "\n\tProduct name: " + item.getKey().getProductName()
+                    + "\n\tPrice for unit: " + item.getKey().getProductPrice()
+                    + "\n\tQuantity: " + item.getValue();
+        }
+        return output;
+    }
+
     @Override
     public String display() {
-        String output = "";
+        String output = customer.display()
+                + "\nOrder ID: " + orderId
+                + "\nDate Created: " + dateCreated
+                + "\nStatus: " + status
+                + "\nDate Shipped: " + dateShipped
+                + "\nOrder List: \t" + this.viewOrderList()
+                + "\nTotal: " + this.calcTotal() + " (Shipping Cost: " + customer.getShippingInfo().getShippingCost() + " )";
         return output;
     }
 }

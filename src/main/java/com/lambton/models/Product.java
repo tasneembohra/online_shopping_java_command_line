@@ -1,6 +1,8 @@
 package com.lambton.models;
 
-public class Product {
+import com.lambton.utils.IDisplay;
+
+public class Product implements IDisplay {
     private int productId = 0;
     private String productName;
     private double productPrice;
@@ -33,5 +35,13 @@ public class Product {
 
     public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
+    }
+
+    @Override
+    public String display() {
+        String output = "\nProduct ID: " + productId
+                + "\nProduct Name: " + productName
+                + "\nPrice for unit: " + productPrice;
+        return output;
     }
 }

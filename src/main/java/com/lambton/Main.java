@@ -24,8 +24,9 @@ public class Main {
         order1.setShippingType("Courier");
         order1.setDateShipped(new GregorianCalendar().getTime());
         order1.setStatus("Shipped");
-        System.out.println(order1.calcTotal());
         order1.placeOrder();
+
+        System.out.println(order1.display());
 
 
     }

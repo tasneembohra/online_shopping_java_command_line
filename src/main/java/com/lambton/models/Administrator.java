@@ -1,6 +1,8 @@
 package com.lambton.models;
 
-public class Administrator extends User {
+import com.lambton.utils.IDisplay;
+
+public class Administrator extends User implements IDisplay {
     private String adminName;
     private String email;
 
@@ -28,5 +30,13 @@ public class Administrator extends User {
 
     public Product addProductToCatalog(String productName, double productPrice) {
         return new Product(productName, productPrice);
+    }
+
+    @Override
+    public String display() {
+        String output = "\nAdmin ID: " + super.getUserId()
+                + "\nAdmin Email: " + email
+                + "\nAdmin Name: " + adminName;
+        return output;
     }
 }

@@ -1,10 +1,12 @@
 package com.lambton.models;
 
+import com.lambton.utils.IDisplay;
+
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
-public class ShoppingCart {
+public class ShoppingCart implements IDisplay {
     private int cartId = 0;
     private Date dateAdded;
     private Customer customer;
@@ -46,11 +48,21 @@ public class ShoppingCart {
 
     public void viewCartDetails() {
         for (HashMap.Entry<Product, Integer> item: cartMap.entrySet()) {
-            System.out.println("Product name: " + item.getKey().getProductName() + "\nQuantity: " + item.getValue());
+            System.out.println("Product name: " + item.getKey().getProductName()
+                    + "\nPrice for unit: " + item.getKey().getProductPrice()
+                    + "\nQuantity: " + item.getValue());
         }
     }
 
     public Order checkOut() {
         return new Order(this);
+    }
+
+    @Override
+    public String display() {
+        String output = "\nCart ID: " + cartId
+                + "\nDate Added: " + dateAdded
+                + "\nCustomer Name: " + customer.getCustomerName();
+        return output;
     }
 }

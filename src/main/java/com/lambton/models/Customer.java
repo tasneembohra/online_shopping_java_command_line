@@ -53,7 +53,11 @@ public class Customer extends User {
 
     @Override
     public String display() {
-        String output = "";
+        String output = "\nCustomer ID: " + super.getUserId()
+                + "\nCustomer Name: " + customerName
+                + "\nCustomer Email: " + email
+                + "\nCustomer CreditCard: " + creditCardInfo
+                + "\nShipping Information: \t" + shippingInfo.display();
         return output;
     }
 }
