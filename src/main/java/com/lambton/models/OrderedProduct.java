@@ -3,10 +3,11 @@ package com.lambton.models;
 import com.google.gson.annotations.SerializedName;
 
 public class OrderedProduct {
-    @SerializedName("quantity")
-    private int quantity;
     @SerializedName("product")
     private Product product;
+
+    @SerializedName("quantity")
+    private int quantity;
 
     public OrderedProduct(Product product, int quantity) {
         this.quantity = quantity;
@@ -27,5 +28,9 @@ public class OrderedProduct {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public double calculatePrice() {
+        return product.getProductPrice() * quantity;
     }
 }

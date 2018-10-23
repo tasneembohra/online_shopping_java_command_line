@@ -99,7 +99,7 @@ public class Order implements IDisplay {
         double total = 0;
         this.calcShippingCost();
         for (OrderedProduct orderedProduct : products) {
-            total += orderedProduct.getProduct().getProductPrice() * orderedProduct.getQuantity();
+            total += orderedProduct.calculatePrice();
         }
         total += customer.getShippingInfo().getShippingCost();
         return total;
@@ -116,7 +116,10 @@ public class Order implements IDisplay {
     public String viewOrderList() {
         StringBuilder builder = new StringBuilder();
         for (OrderedProduct orderedProduct : products) {
-            builder.append("\n\t\t\tProduct name: ").append(orderedProduct.getProduct().getProductName()).append("\n\t\t\tPrice for unit: ").append(TextFormatter.currency(orderedProduct.getProduct().getProductPrice())).append("\n\t\t\tQuantity: ").append(orderedProduct.getQuantity());
+            builder.append("\n\t\t\tProduct name: ").append(orderedProduct.getProduct().getProductName())
+                    .append("\n\t\t\tPrice for unit: ").append(TextFormatter.currency(orderedProduct.getProduct().getProductPrice()))
+                    .append("\n\t\t\tQuantity: ").append(orderedProduct.getQuantity())
+                    .append("\n\t\t\tProduct Price: ").append(TextFormatter.currency(orderedProduct.calculatePrice()));
         }
         return builder.toString();
     }
