@@ -1,6 +1,7 @@
 package com.lambton.models;
 
 import com.lambton.utils.IDisplay;
+import com.lambton.utils.TextFormatter;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,7 +41,6 @@ public class ShoppingCart implements IDisplay {
 
     public void addProduct(Product product, int quantity) {
         OrderedProduct orderedProduct = new OrderedProduct(product, quantity);
-        //System.out.println(orderedProduct.getProduct().getProductName());
         products.add(orderedProduct);
     }
 
@@ -55,7 +55,7 @@ public class ShoppingCart implements IDisplay {
     public void viewCartDetails() {
         for (OrderedProduct orderedProduct : products) {
             System.out.println("Product name: " + orderedProduct.getProduct().getProductName()
-                    + "\nPrice for unit: " + orderedProduct.getProduct().getProductPrice()
+                    + "\nPrice for unit: " + TextFormatter.currency(orderedProduct.getProduct().getProductPrice())
                     + "\nQuantity: " + orderedProduct.getQuantity());
         }
     }

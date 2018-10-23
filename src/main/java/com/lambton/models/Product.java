@@ -2,6 +2,7 @@ package com.lambton.models;
 
 import com.google.gson.annotations.SerializedName;
 import com.lambton.utils.IDisplay;
+import com.lambton.utils.TextFormatter;
 
 public class Product implements IDisplay {
     @SerializedName("id")
@@ -45,6 +46,6 @@ public class Product implements IDisplay {
     public String display() {
         return "\n\r\tProduct ID: " + productId
                 + "\n\tProduct Name: " + productName
-                + "\n\tPrice for unit: " + productPrice;
+                + "\n\tPrice for unit: " + TextFormatter.currency(productPrice);
     }
 }
