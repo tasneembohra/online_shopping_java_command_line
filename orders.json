@@ -13,8 +13,8 @@
         "type": "Courier"
       }
     },
-    "dateCreated": "1540255884",
-    "dateShipped": "1540255884",
+    "dateCreated": "1540255884000",
+    "dateShipped": "1540255884000",
     "status" : "Shipped",
     "confirmedOrder" : true,
     "products" : [
@@ -58,8 +58,8 @@
         "type": "Post"
       }
     },
-    "dateCreated": "1540255884",
-    "dateShipped": "1540255884",
+    "dateCreated": "1540255884000",
+    "dateShipped": "1540255884000",
     "status" : "Shipped",
     "confirmedOrder" : true,
     "products" : [
@@ -87,8 +87,8 @@
         "type": "Courier"
       }
     },
-    "dateCreated": "1540255884",
-    "dateShipped": "1540255884",
+    "dateCreated": "1540255884000",
+    "dateShipped": "1540255884000",
     "status" : "Shipped",
     "confirmedOrder" : true,
     "products" : [
