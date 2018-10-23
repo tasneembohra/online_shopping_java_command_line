@@ -11,7 +11,8 @@ public class Product implements IDisplay {
     @SerializedName("price")
     private double productPrice;
 
-    public Product(String productName, double productPrice) {
+    public Product(int id, String productName, double productPrice) {
+        this.productId = id;
         this.productName = productName;
         this.productPrice = productPrice;
     }

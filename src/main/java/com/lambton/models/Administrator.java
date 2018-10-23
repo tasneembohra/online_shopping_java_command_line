@@ -6,8 +6,8 @@ public class Administrator extends User implements IDisplay {
     private String adminName;
     private String email;
 
-    public Administrator(String password, String adminName, String email) {
-        super(password);
+    public Administrator(int userdId, String password, String adminName, String email) {
+        super(userdId, password);
         this.adminName = adminName;
         this.email = email;
     }
@@ -28,8 +28,8 @@ public class Administrator extends User implements IDisplay {
         this.email = email;
     }
 
-    public Product addProductToCatalog(String productName, double productPrice) {
-        return new Product(productName, productPrice);
+    public Product addProductToCatalog(int id, String productName, double productPrice) {
+        return new Product(id, productName, productPrice);
     }
 
     @Override

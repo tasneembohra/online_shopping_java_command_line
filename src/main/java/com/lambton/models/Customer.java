@@ -12,8 +12,8 @@ public class Customer extends User {
     @SerializedName("shippingInfo")
     private ShippingInfo shippingInfo; //last or default shipping info
 
-    public Customer(String password, String customerName, String email, String creditCardInfo, ShippingInfo shippingInfo) {
-        super(password);
+    public Customer(int userId, String password, String customerName, String email, String creditCardInfo, ShippingInfo shippingInfo) {
+        super(userId, password);
         this.customerName = customerName;
         this.email = email;
         this.creditCardInfo = creditCardInfo;

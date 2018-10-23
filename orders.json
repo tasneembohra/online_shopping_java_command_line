@@ -22,30 +22,59 @@
         "product": {
           "id": 1,
           "name": "Apple iMac Pro 128GB SSD",
-          "price": 1000
+          "price": 200
         },
-        "quantitiy" : 2
+        "quantity" : 2
       },
       {
         "product": {
-          "id": 1,
-          "name": "Apple iMac Pro 128GB SSD",
-          "price": 1000
+          "id": 2,
+          "name": "Apple Magic Mouse",
+          "price": 100
         },
-        "quantitiy" : 2
+        "quantity" : 1
       },
       {
         "product": {
-          "id": 1,
-          "name": "Apple iMac Pro 128GB SSD",
+          "id": 3,
+          "name": "Google Pixel",
           "price": 1000
         },
-        "quantitiy" : 2
+        "quantity" : 1
       }
     ]
   },
   {
-    "id" : 1,
+    "id" : 2,
+    "customer" : {
+      "id": 2,
+      "name": "Daian Aiziatov",
+      "email": "daian@xyz.com",
+      "creditcard": "1234567890123456",
+      "shippingInfo": {
+        "address": "123, Rainy bld. Scarborough",
+        "city": "Scarborough",
+        "region" : "ON",
+        "type": "Post"
+      }
+    },
+    "dateCreated": "1540255884",
+    "dateShipped": "1540255884",
+    "status" : "Shipped",
+    "confirmedOrder" : true,
+    "products" : [
+      {
+        "product": {
+          "id": 4,
+          "name": "Apple EarPods",
+          "price": 20
+        },
+        "quantity" : 10
+      }
+    ]
+  },
+  {
+    "id" : 3,
     "customer" : {
       "id": 1,
       "name": "Tasneem Bohra",
@@ -66,71 +95,18 @@
       {
         "product": {
           "id": 1,
-          "name": "Apple iMac Pro 128GB SSD",
+          "name": "Apple IPhone Xs",
           "price": 1000
         },
-        "quantitiy" : 2
+        "quantity" : 1
       },
       {
         "product": {
           "id": 1,
-          "name": "Apple iMac Pro 128GB SSD",
-          "price": 1000
+          "name": "IPhone case",
+          "price": 10
         },
-        "quantitiy" : 2
-      },
-      {
-        "product": {
-          "id": 1,
-          "name": "Apple iMac Pro 128GB SSD",
-          "price": 1000
-        },
-        "quantitiy" : 2
-      }
-    ]
-  },
-  {
-    "id" : 1,
-    "customer" : {
-      "id": 1,
-      "name": "Tasneem Bohra",
-      "email": "tasneem@xyz.com",
-      "creditcard": "1234567890123456",
-      "shippingInfo": {
-        "address": "15 Park Forest Av, Toronto",
-        "city": "Toronto",
-        "region" : "ON",
-        "type": "Courier"
-      }
-    },
-    "dateCreated": "1540255884",
-    "dateShipped": "1540255884",
-    "status" : "Shipped",
-    "confirmedOrder" : true,
-    "products" : [
-      {
-        "product": {
-          "id": 1,
-          "name": "Apple iMac Pro 128GB SSD",
-          "price": 1000
-        },
-        "quantitiy" : 2
-      },
-      {
-        "product": {
-          "id": 1,
-          "name": "Apple iMac Pro 128GB SSD",
-          "price": 1000
-        },
-        "quantitiy" : 2
-      },
-      {
-        "product": {
-          "id": 1,
-          "name": "Apple iMac Pro 128GB SSD",
-          "price": 1000
-        },
-        "quantitiy" : 2
+        "quantity" : 2
       }
     ]
   }

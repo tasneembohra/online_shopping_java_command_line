@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OnlineShoppingCart.iml" filepath="$PROJECT_DIR$/.idea/modules/OnlineShoppingCart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OnlineShoppingCart_main.iml" filepath="$PROJECT_DIR$/.idea/modules/OnlineShoppingCart_main.iml" group="OnlineShoppingCart" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OnlineShoppingCart_test.iml" filepath="$PROJECT_DIR$/.idea/modules/OnlineShoppingCart_test.iml" group="OnlineShoppingCart" />
       <module fileurl="file://$PROJECT_DIR$/.idea/online_shopping_java_command_line.iml" filepath="$PROJECT_DIR$/.idea/online_shopping_java_command_line.iml" />
     </modules>
   </component>

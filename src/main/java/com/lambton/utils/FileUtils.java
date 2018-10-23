@@ -14,10 +14,10 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class FileUtils {
-    public static void writeToPdf(String text) {
+    public static void writeToPdf(String text, String fileName) {
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(new File("orders.pdf")));
+            PdfWriter.getInstance(document, new FileOutputStream(new File(fileName)));
             document.open();
             BufferedReader br = new BufferedReader(new StringReader(text));
             String line;
@@ -41,16 +41,20 @@ public class FileUtils {
             ex.printStackTrace();
         }
     }
-    public static void readFromJSON() {
+    public static String readFromJSON(String fileName) {
+        String output = "";
         try {
-            JsonReader reader = new JsonReader(new FileReader("orders.json"));
+            JsonReader reader = new JsonReader(new FileReader(fileName));
             Gson gson = new Gson();
             ArrayList<Order> order = gson.fromJson(reader, new TypeToken<ArrayList<Order>>() {}.getType());
             for (Order c: order) {
-                System.out.println(c.display());
+                c.setShippingType(c.getShippingInfo().getShippingType());
+                output += c.display();
             }
+            return output;
         } catch (IOException e) {
             e.printStackTrace();
+            return output;
         }
     }
 }
