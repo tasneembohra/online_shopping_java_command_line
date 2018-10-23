@@ -1,14 +1,17 @@
 package com.lambton.models;
 
+import com.google.gson.annotations.SerializedName;
 import com.lambton.utils.IDisplay;
 
 public class Product implements IDisplay {
-    private int productId = 0;
+    @SerializedName("id")
+    private int productId;
+    @SerializedName("name")
     private String productName;
+    @SerializedName("price")
     private double productPrice;
 
     public Product(String productName, double productPrice) {
-        productId++;
         this.productName = productName;
         this.productPrice = productPrice;
     }

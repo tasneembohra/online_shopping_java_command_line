@@ -1,17 +1,17 @@
 package com.lambton.models;
 
+import com.google.gson.annotations.SerializedName;
 import com.lambton.utils.IDisplay;
 
 public abstract class User implements IDisplay {
-
-    private int userId = 0;
+    @SerializedName("id")
+    protected int userId = 0;
     private String password;
     private String loginStatus;
 
     public User() { }
 
     public User(String password) {
-        userId++;
         this.password = password;
     }
 

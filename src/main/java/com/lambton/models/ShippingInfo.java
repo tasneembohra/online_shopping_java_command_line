@@ -1,16 +1,20 @@
 package com.lambton.models;
 
+import com.google.gson.annotations.SerializedName;
 import com.lambton.utils.IDisplay;
 
 public class ShippingInfo implements IDisplay {
-    private int shippingId = 0;
+    @SerializedName("id")
+    private int shippingId;
+    @SerializedName("address")
     private String shippingAddress;
+    @SerializedName("type")
     private String shippingType;
     private double shippingCost;
+    @SerializedName("region")
     private String shippingRegionId;
 
     public ShippingInfo(String shippingAddress, String shippingRegionId) {
-        shippingId++;
         this.shippingAddress = shippingAddress;
         this.shippingRegionId = shippingRegionId;
     }

@@ -1,9 +1,15 @@
 package com.lambton.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Customer extends User {
+    @SerializedName("name")
     private String customerName;
+    @SerializedName("email")
     private String email;
+    @SerializedName("creditcard")
     private String creditCardInfo;
+    @SerializedName("shippingInfo")
     private ShippingInfo shippingInfo; //last or default shipping info
 
     public Customer(String password, String customerName, String email, String creditCardInfo, ShippingInfo shippingInfo) {

@@ -1,0 +1,137 @@
+[
+  {
+    "id" : 1,
+    "customer" : {
+      "id": 1,
+      "name": "Tasneem Bohra",
+      "email": "tasneem@xyz.com",
+      "creditcard": "1234567890123456",
+      "shippingInfo": {
+        "address": "15 Park Forest Av, Toronto",
+        "city": "Toronto",
+        "region" : "ON",
+        "type": "Courier"
+      }
+    },
+    "dateCreated": "1540255884",
+    "dateShipped": "1540255884",
+    "status" : "Shipped",
+    "confirmedOrder" : true,
+    "products" : [
+      {
+        "product": {
+          "id": 1,
+          "name": "Apple iMac Pro 128GB SSD",
+          "price": 1000
+        },
+        "quantitiy" : 2
+      },
+      {
+        "product": {
+          "id": 1,
+          "name": "Apple iMac Pro 128GB SSD",
+          "price": 1000
+        },
+        "quantitiy" : 2
+      },
+      {
+        "product": {
+          "id": 1,
+          "name": "Apple iMac Pro 128GB SSD",
+          "price": 1000
+        },
+        "quantitiy" : 2
+      }
+    ]
+  },
+  {
+    "id" : 1,
+    "customer" : {
+      "id": 1,
+      "name": "Tasneem Bohra",
+      "email": "tasneem@xyz.com",
+      "creditcard": "1234567890123456",
+      "shippingInfo": {
+        "address": "15 Park Forest Av, Toronto",
+        "city": "Toronto",
+        "region" : "ON",
+        "type": "Courier"
+      }
+    },
+    "dateCreated": "1540255884",
+    "dateShipped": "1540255884",
+    "status" : "Shipped",
+    "confirmedOrder" : true,
+    "products" : [
+      {
+        "product": {
+          "id": 1,
+          "name": "Apple iMac Pro 128GB SSD",
+          "price": 1000
+        },
+        "quantitiy" : 2
+      },
+      {
+        "product": {
+          "id": 1,
+          "name": "Apple iMac Pro 128GB SSD",
+          "price": 1000
+        },
+        "quantitiy" : 2
+      },
+      {
+        "product": {
+          "id": 1,
+          "name": "Apple iMac Pro 128GB SSD",
+          "price": 1000
+        },
+        "quantitiy" : 2
+      }
+    ]
+  },
+  {
+    "id" : 1,
+    "customer" : {
+      "id": 1,
+      "name": "Tasneem Bohra",
+      "email": "tasneem@xyz.com",
+      "creditcard": "1234567890123456",
+      "shippingInfo": {
+        "address": "15 Park Forest Av, Toronto",
+        "city": "Toronto",
+        "region" : "ON",
+        "type": "Courier"
+      }
+    },
+    "dateCreated": "1540255884",
+    "dateShipped": "1540255884",
+    "status" : "Shipped",
+    "confirmedOrder" : true,
+    "products" : [
+      {
+        "product": {
+          "id": 1,
+          "name": "Apple iMac Pro 128GB SSD",
+          "price": 1000
+        },
+        "quantitiy" : 2
+      },
+      {
+        "product": {
+          "id": 1,
+          "name": "Apple iMac Pro 128GB SSD",
+          "price": 1000
+        },
+        "quantitiy" : 2
+      },
+      {
+        "product": {
+          "id": 1,
+          "name": "Apple iMac Pro 128GB SSD",
+          "price": 1000
+        },
+        "quantitiy" : 2
+      }
+    ]
+  }
+]

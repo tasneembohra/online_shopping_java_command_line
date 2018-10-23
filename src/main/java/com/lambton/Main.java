@@ -1,14 +1,8 @@
 package com.lambton;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfWriter;
 import com.lambton.models.*;
 import com.lambton.utils.FileUtils;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.GregorianCalendar;
 
 public class Main {
@@ -29,7 +23,7 @@ public class Main {
         Order order1 = shoppingCart1.checkOut();
 
         order1.setShippingType("Courier");
-        order1.setDateShipped(new GregorianCalendar().getTime());
+        order1.setDateShipped(1540255884);
         order1.setStatus("Shipped");
         order1.placeOrder();
 
@@ -39,7 +33,7 @@ public class Main {
         Order order2 = shoppingCart1.checkOut();
 
         order2.setShippingType("Courier");
-        order2.setDateShipped(new GregorianCalendar().getTime());
+        order2.setDateShipped(1540255884);
         order2.setStatus("Shipped");
         order2.placeOrder();
 
@@ -50,6 +44,7 @@ public class Main {
         System.out.println(builder.toString());
         FileUtils.writeToPdf(builder.toString());
 
+        FileUtils.readFromJSON();
 
     }
 }

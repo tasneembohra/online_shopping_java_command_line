@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Tasneem Bohra",
+    "email": "tasneem@xyz.com",
+    "creditcard": "1234567890123456",
+    "shippingInfo": {
+      "address": "15 Park Forest Av, Toronto",
+      "city": "Toronto",
+      "region" : "ON",
+      "type": "Courier"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Tasneem Bohra",
+    "email": "tasneem@xyz.com",
+    "creditcard": "1234567890123456",
+    "shippingInfo": {
+      "address": "15 Park Forest Av",
+      "city": "Toronto",
+      "region" : "ON",
+      "type": "Courier"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Tasneem Bohra",
+    "email": "tasneem@xyz.com",
+    "creditcard": "1234567890123456",
+    "shippingInfo": {
+      "address": "15 Park Forest Av",
+      "city": "Toronto",
+      "region" : "ON",
+      "type": "Courier"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Tasneem Bohra",
+    "email": "tasneem@xyz.com",
+    "creditcard": "1234567890123456",
+    "shippingInfo": {
+      "address": "15 Park Forest Av",
+      "city": "Toronto",
+      "region" : "ON",
+      "type": "Courier"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Tasneem Bohra",
+    "email": "tasneem@xyz.com",
+    "creditcard": "1234567890123456",
+    "shippingInfo": {
+      "address": "15 Park Forest Av",
+      "city": "Toronto",
+      "region" : "ON",
+      "type": "Courier"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Tasneem Bohra",
+    "email": "tasneem@xyz.com",
+    "creditcard": "1234567890123456",
+    "shippingInfo": {
+      "address": "15 Park Forest Av",
+      "city": "Toronto",
+      "region" : "ON",
+      "type": "Courier"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Tasneem Bohra",
+    "email": "tasneem@xyz.com",
+    "creditcard": "1234567890123456",
+    "shippingInfo": {
+      "address": "15 Park Forest Av",
+      "city": "Toronto",
+      "region" : "ON",
+      "type": "Courier"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Tasneem Bohra",
+    "email": "tasneem@xyz.com",
+    "creditcard": "1234567890123456",
+    "shippingInfo": {
+      "address": "15 Park Forest Av",
+      "city": "Toronto",
+      "region" : "ON",
+      "type": "Courier"
+    }
+  }
+]

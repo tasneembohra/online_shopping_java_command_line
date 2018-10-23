@@ -1,9 +1,17 @@
 package com.lambton.utils;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.lambton.models.Customer;
+import com.lambton.models.Order;
 
 import java.io.*;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class FileUtils {
     public static void writeToPdf(String text) {
@@ -31,6 +39,18 @@ public class FileUtils {
 
         } catch (IOException | DocumentException ex) {
             ex.printStackTrace();
+        }
+    }
+    public static void readFromJSON() {
+        try {
+            JsonReader reader = new JsonReader(new FileReader("orders.json"));
+            Gson gson = new Gson();
+            ArrayList<Order> order = gson.fromJson(reader, new TypeToken<ArrayList<Order>>() {}.getType());
+            for (Order c: order) {
+                System.out.println(c.display());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

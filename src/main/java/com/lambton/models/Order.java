@@ -1,5 +1,6 @@
 package com.lambton.models;
 
+import com.google.gson.annotations.SerializedName;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.lambton.utils.IDisplay;
@@ -7,24 +8,29 @@ import com.sun.tools.internal.ws.wsdl.document.Output;
 
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public class Order implements IDisplay {
 
-    private int orderId = 0;
-    private Date dateCreated;
-    private Date dateShipped;
+    @SerializedName("id")
+    private int orderId;
+    private long dateCreated;
+    private long dateShipped;
+    @SerializedName("status")
     private String status;
     private HashMap<Product, Integer> orderMap;
+    @SerializedName("products")
+    private ArrayList<OrderedProducts> products;
+    @SerializedName("customer")
     private Customer customer;
+    @SerializedName("confirmedOrder")
     private boolean orderConfirmation = false; //confirmation
 
 
     public Order(ShoppingCart shoppingCart) {
-        orderId++;
-        dateCreated = new GregorianCalendar().getTime();
         orderMap = shoppingCart.getCartMap();
         customer = shoppingCart.getCustomer();
     }
@@ -37,15 +43,15 @@ public class Order implements IDisplay {
         return orderId;
     }
 
-    public Date getDateCreated() {
+    public long getDateCreated() {
         return dateCreated;
     }
 
-    public Date getDateShipped() {
+    public long getDateShipped() {
         return dateShipped;
     }
 
-    public void setDateShipped(Date dateShipped) {
+    public void setDateShipped(long dateShipped) {
         this.dateShipped = dateShipped;
     }
 
@@ -126,10 +132,10 @@ public class Order implements IDisplay {
         SimpleDateFormat format = new SimpleDateFormat("MMM dd, YYYY");
         return customer.display()
                 + "\n\rOrder ID: " + orderId
-                + "\n\tDate Created: " + format.format(dateCreated)
+                + "\n\tDate Created: " + format.format(new Date(dateCreated))
                 + "\n\tStatus: " + status
-                + "\n\tDate Shipped: " + format.format(dateCreated)
-                + "\n\tOrder List: \t" + this.viewOrderList()
-                + "\n\rTotal: " + this.calcTotal() + " (Shipping Cost: " + customer.getShippingInfo().getShippingCost() + " )";
+                + "\n\tDate Shipped: " + format.format(new Date(dateShipped));
+                //+ "\n\tOrder List: \t" + this.viewOrderList()
+                //+ "\n\rTotal: " + this.calcTotal() + " (Shipping Cost: " + customer.getShippingInfo().getShippingCost() + " )";
     }
 }
