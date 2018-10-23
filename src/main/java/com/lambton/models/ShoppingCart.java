@@ -2,20 +2,28 @@ package com.lambton.models;
 
 import com.lambton.utils.IDisplay;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 
 public class ShoppingCart implements IDisplay {
-    private int cartId = 0;
+    private int cartId;
     private Date dateAdded;
     private Customer customer;
-    private HashMap<Product, Integer> cartMap = new HashMap<>(); //<productId, quantity>
+    private ArrayList<OrderedProduct> products = new ArrayList<>();
 
-    public ShoppingCart(Customer customer) {
-        cartId++;
+    public ShoppingCart(int cartId, Customer customer) {
+        this.cartId = cartId;
         dateAdded = new GregorianCalendar().getTime();
         this.customer = customer;
+    }
+
+    public ArrayList<OrderedProduct> getProducts() {
+        return products;
+    }
+
+    public void setProducts(ArrayList<OrderedProduct> products) {
+        this.products = products;
     }
 
     public int getCartId() {
@@ -30,27 +38,25 @@ public class ShoppingCart implements IDisplay {
         return customer;
     }
 
-    public HashMap<Product, Integer> getCartMap() {
-        return cartMap;
-    }
-
     public void addProduct(Product product, int quantity) {
-        cartMap.put(product, quantity);
+        OrderedProduct orderedProduct = new OrderedProduct(product, quantity);
+        //System.out.println(orderedProduct.getProduct().getProductName());
+        products.add(orderedProduct);
     }
 
     public void updateQuiantityForProduct(Product product, int quantity) {
-        cartMap.put(product, quantity);
+        products.get(products.indexOf(product)).setQuantity(quantity);
     }
 
     public void removeProduct(Product product) {
-        cartMap.remove(product);
+        products.remove(product);
     }
 
     public void viewCartDetails() {
-        for (HashMap.Entry<Product, Integer> item: cartMap.entrySet()) {
-            System.out.println("Product name: " + item.getKey().getProductName()
-                    + "\nPrice for unit: " + item.getKey().getProductPrice()
-                    + "\nQuantity: " + item.getValue());
+        for (OrderedProduct orderedProduct : products) {
+            System.out.println("Product name: " + orderedProduct.getProduct().getProductName()
+                    + "\nPrice for unit: " + orderedProduct.getProduct().getProductPrice()
+                    + "\nQuantity: " + orderedProduct.getQuantity());
         }
     }
 

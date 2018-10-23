@@ -1,17 +1,11 @@
 package com.lambton.models;
 
 import com.google.gson.annotations.SerializedName;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.pdf.PdfWriter;
 import com.lambton.utils.IDisplay;
-import com.sun.tools.internal.ws.wsdl.document.Output;
 
-import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
 
 public class Order implements IDisplay {
 
@@ -21,9 +15,8 @@ public class Order implements IDisplay {
     private long dateShipped;
     @SerializedName("status")
     private String status;
-    private HashMap<Product, Integer> orderMap;
     @SerializedName("products")
-    private ArrayList<OrderedProducts> products;
+    private ArrayList<OrderedProduct> products;
     @SerializedName("customer")
     private Customer customer;
     @SerializedName("confirmedOrder")
@@ -31,7 +24,7 @@ public class Order implements IDisplay {
 
 
     public Order(ShoppingCart shoppingCart) {
-        orderMap = shoppingCart.getCartMap();
+        products = shoppingCart.getProducts();
         customer = shoppingCart.getCustomer();
     }
 
@@ -91,8 +84,8 @@ public class Order implements IDisplay {
 
     public void calcShippingCost() {
         int productCount = 0;
-        for (HashMap.Entry<Product, Integer> product: orderMap.entrySet()) {
-            productCount += product.getValue();
+        for (OrderedProduct orderedProduct : products) {
+            productCount += orderedProduct.getQuantity();
         }
         if (productCount > 10) {
             customer.getShippingInfo().setShippingCost(customer.getShippingInfo().getShippingCost() * 2);
@@ -104,8 +97,8 @@ public class Order implements IDisplay {
     public double calcTotal() {
         double total = 0;
         this.calcShippingCost();
-        for (HashMap.Entry<Product, Integer> product: orderMap.entrySet()) {
-            total += product.getKey().getProductPrice() * product.getValue();
+        for (OrderedProduct orderedProduct : products) {
+            total += orderedProduct.getProduct().getProductPrice() * orderedProduct.getQuantity();
         }
         total += customer.getShippingInfo().getShippingCost();
         return total;
@@ -121,8 +114,8 @@ public class Order implements IDisplay {
 
     public String viewOrderList() {
         StringBuilder builder = new StringBuilder();
-        for (HashMap.Entry<Product, Integer> item: orderMap.entrySet()) {
-            builder.append("\n\t\t\tProduct name: ").append(item.getKey().getProductName()).append("\n\t\t\tPrice for unit: ").append(item.getKey().getProductPrice()).append("\n\t\t\tQuantity: ").append(item.getValue());
+        for (OrderedProduct orderedProduct : products) {
+            builder.append("\n\t\t\tProduct name: ").append(orderedProduct.getProduct().getProductName()).append("\n\t\t\tPrice for unit: ").append(orderedProduct.getProduct().getProductPrice()).append("\n\t\t\tQuantity: ").append(orderedProduct.getQuantity());
         }
         return builder.toString();
     }
@@ -134,8 +127,8 @@ public class Order implements IDisplay {
                 + "\n\rOrder ID: " + orderId
                 + "\n\tDate Created: " + format.format(new Date(dateCreated))
                 + "\n\tStatus: " + status
-                + "\n\tDate Shipped: " + format.format(new Date(dateShipped));
-                //+ "\n\tOrder List: \t" + this.viewOrderList()
-                //+ "\n\rTotal: " + this.calcTotal() + " (Shipping Cost: " + customer.getShippingInfo().getShippingCost() + " )";
+                + "\n\tDate Shipped: " + format.format(new Date(dateShipped))
+                + "\n\tOrder List: \t" + this.viewOrderList()
+                + "\n\rTotal: " + this.calcTotal() + " (Shipping Cost: " + customer.getShippingInfo().getShippingCost() + " )";
     }
 }

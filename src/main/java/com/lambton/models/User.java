@@ -5,13 +5,12 @@ import com.lambton.utils.IDisplay;
 
 public abstract class User implements IDisplay {
     @SerializedName("id")
-    protected int userId = 0;
+    protected int userId;
     private String password;
     private String loginStatus;
 
-    public User() { }
-
-    public User(String password) {
+    public User(int userId, String password) {
+        this.userId = userId;
         this.password = password;
     }
 
