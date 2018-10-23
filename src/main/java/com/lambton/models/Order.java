@@ -2,6 +2,7 @@ package com.lambton.models;
 
 import com.google.gson.annotations.SerializedName;
 import com.lambton.utils.IDisplay;
+import com.lambton.utils.TextFormatter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -115,7 +116,7 @@ public class Order implements IDisplay {
     public String viewOrderList() {
         StringBuilder builder = new StringBuilder();
         for (OrderedProduct orderedProduct : products) {
-            builder.append("\n\t\t\tProduct name: ").append(orderedProduct.getProduct().getProductName()).append("\n\t\t\tPrice for unit: ").append(orderedProduct.getProduct().getProductPrice()).append("\n\t\t\tQuantity: ").append(orderedProduct.getQuantity());
+            builder.append("\n\t\t\tProduct name: ").append(orderedProduct.getProduct().getProductName()).append("\n\t\t\tPrice for unit: ").append(TextFormatter.currency(orderedProduct.getProduct().getProductPrice())).append("\n\t\t\tQuantity: ").append(orderedProduct.getQuantity());
         }
         return builder.toString();
     }
@@ -129,6 +130,6 @@ public class Order implements IDisplay {
                 + "\n\tStatus: " + status
                 + "\n\tDate Shipped: " + format.format(new Date(dateShipped))
                 + "\n\tOrder List: \t" + this.viewOrderList()
-                + "\n\rTotal: " + this.calcTotal() + " (Shipping Cost: " + customer.getShippingInfo().getShippingCost() + " )";
+                + "\n\rTotal: " + TextFormatter.currency(this.calcTotal()) + " (Shipping Cost: " + TextFormatter.currency(customer.getShippingInfo().getShippingCost()) + " )";
     }
 }
